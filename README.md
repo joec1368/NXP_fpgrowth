@@ -6,7 +6,7 @@ Description for each file in the directory:
 - [fp_growth.py](https://github.com/becks9908/NXP_fpgrowt/blob/main/fp_growth.py) - Main file.
 - [preprocess.py](https://github.com/becks9908/NXP_fpgrowt/blob/main/preprocess.py) - Reading precess file.
 - [requirements.txt](https://github.com/becks9908/NXP_fpgrowt/blob/main/requirements.txt) - Required dependencies that need to be installed.
-- [baseline.py]() - Baseline file, simulate the way of manual search.
+- [baseline.py](https://github.com/becks9908/NXP_fpgrowt/blob/main/baseline.py) - Baseline file, simulate the way of manual search.
 - [Datafile_0222](https://github.com/becks9908/NXP_fpgrowt/tree/main/Datafile_0222) - Folder of simulation files, a total of 100 records.
 - [reference_result](https://github.com/becks9908/NXP_fpgrowt/tree/main/reference_result) - Folder of the generated file example.
 - [Result]() - If the folder does not exist initially, it will generate later.
