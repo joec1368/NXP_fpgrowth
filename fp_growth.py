@@ -24,7 +24,7 @@ K = 20
 # file read setting
 TRAIN = 75
 TEST = 25
-DATA_PATH = '/Users/beckswaz/Desktop/NXP_fpgrowth/Datafile_0222/'
+DATA_PATH = 'Datafile_0222/'
 SHEET_NAME = 'Data_1'
 
 # default setting
@@ -50,8 +50,8 @@ def estimate_file_fail_train():
         for a in range(TRAIN):
             cur_file = DATA_FILE_NAME[a]
             cur_path = DATA_PATH + cur_file
-            print("========== Estimating training file " +
-                  cur_file + " ==========")
+            print(" Estimating training file " +
+                  cur_file + " ")
             # estimate the fail rate of each training file
             p = Preprocess(
                 file_name=cur_path,
@@ -77,15 +77,15 @@ def estimate_file_fail_test():
     '''
     Estimate the file rate of test files.
     '''
-    print("\n##############  5. Estimate testing file fail rate process ##############")
+    print("\n##############  5. Estimate testing file fail rate process ##############\n")
 
     all_test_fail_rate_result_file_dic = {}
 
     for cut_point in range(TEST):
         cur_file = DATA_FILE_NAME[cut_point+TRAIN]
         cur_path = DATA_PATH + cur_file
-        print("========== Estimating testing file " +
-              cur_file + " ==========")
+        print(" Estimating testing file " +
+              cur_file + " ")
         # estimate the fail rate of each testing file
         p = Preprocess(
             file_name=cur_path,
@@ -111,7 +111,7 @@ def formulate_input(dic):
 
     for file in list(dic):
         input_dataset.append(list(dic[file]))
-    print("\n##############  Dataset formula process finished  #####################")
+    print("\n  Dataset formula process finished.  ")
     return input_dataset
 
 
@@ -136,7 +136,7 @@ def rule_mining(dataset):
         if len(df_filter_rules.index) < K and len(list(row['itemsets'])) >= MIN_LEN:
             df_filter_rules.loc[len(df_filter_rules.index)] = \
                 [row['support'], list(row['itemsets'])]
-    print("\n##############  FP-growth process finished  ############################")
+    print("\n  FP-growth process finished.  ")
     return df_filter_rules
 
 
@@ -161,7 +161,7 @@ def train_score_calculation(df_filter_rules, fail_result_dic):
                     score = 0.0
             scoreList.append(score)
         training_file_score_dic[cur_file] = scoreList
-    print("\n##############  Estimation training score Finished  ###################")
+    print("\n  Estimation training score Finished.  ")
 
     return training_file_score_dic
 
@@ -187,7 +187,7 @@ def test_score_calculation(df_filter_rules, fail_result_dic):
             scoreList.append(score)
         test_file_score_dic[cur_file] = scoreList
 
-    print("\n##############  Estimation testing score Finished  #####################")
+    print("\n  Estimation testing score Finished.  ")
 
     return test_file_score_dic
 
@@ -216,7 +216,7 @@ def similar(score_file_score_dic, test_file_score_dic):
     jsonFile = open("Result/rankingResult.json", "w")
     jsonFile.write(json.dumps(totalRanking_dic, indent=2))
     jsonFile.close()
-    print("\n##############  Estimation of similarity finished  #####################")
+    print("\n  Estimation of similarity finished. \n ")
 
 
 def main():
@@ -247,7 +247,7 @@ def main():
     # Estimate the similarity between the Training/Testing file
     similar_cal = similar(score_cal_train, score_cal_test)
     # Calculate the time required for Testing
-    print("*********************************************\n*                                           *\n*         %s mins          *\n*                                           *\n*********************************************" % ((time.time() - start_time) / 60))
+    print("*********************************************\n*                                           *\n*         %s mins           *\n*                                           *\n*********************************************" % ((time.time() - start_time) / 60))
 
 
 if __name__ == "__main__":

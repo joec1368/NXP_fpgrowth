@@ -78,8 +78,8 @@ FAIL = "00FF0000"
 **Adjust file setting :**
 ```python
 # file read setting
-TRAIN = 10            # Number of training files
-TEST = 10             # Number of testing files
+TRAIN = 75            # Number of training files
+TEST = 25             # Number of testing files
 DATA_PATH = ''        # Put the path of dataset file dictionary
 SHEET_NAME = 'Data_1' # Excel sheet name
 
