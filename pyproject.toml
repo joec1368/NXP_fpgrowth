@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "nxp-fpgrowth"
+version = "0.1.0"
+description = ""
+authors = ["Smile <chenforwork1368@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+mlxtend = "^0.22.0"
+natsort = "^8.4.0"
+numpy = "^1.25.2"
+openpyxl = "^3.1.2"
+pandas = "^2.1.0"
+torchkge = "^0.17.7"
+
+
+[tool.poetry.group.dev.dependencies]
+ipykernel = "^6.25.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
