@@ -53,3 +53,23 @@ class Preprocess():
                 self.train_fail_rate_dic[row['Test Name']] = fail_rate
 
         return self.train_fail_rate_dic
+    
+    def build_all_files(self):
+
+        # read file
+        self._read_file()
+
+        # fitler results column
+        self.df_results = self.df.filter(regex=('Result.*'))
+
+        # filter fail test name
+        self.train_fail_rate_dic = {}
+
+        for index, row in self.df.iterrows():
+            # check each row
+            row_result = list(self.df_results.iloc[index-1])[:]
+            result = [x < row['Test Limit Lo'] or x > row['Test Limit Hi'] for x in row_result]
+            
+            self.train_fail_rate_dic[row['Test Name']] = result
+
+        return self.train_fail_rate_dic
